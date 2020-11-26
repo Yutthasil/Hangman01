@@ -16,7 +16,7 @@ pygame.display.set_caption("Psittestproject") #ตั้งชื่อข้า
 BLACK = (0,0, 0)
 WHITE = (255,255,255)
 RED = (255,0, 0)
-GREEN = pygame.image.load("bg.jpg")#Background หาภาพที่ตรงกับขนาดมาใส่
+GREEN = pygame.image.load('bg.jpg')#Background หาภาพที่ตรงกับขนาดมาใส่
 GREEN = pygame.transform.scale(GREEN, (700, 480))
 BLUE = (0,0,255)
 LIGHT_BLUE = (102,255,255)
@@ -56,6 +56,7 @@ def redraw_game_window():
     pic = hangmanPics[limbs]
     win.blit(pic, (winWidth/2 - pic.get_width()/2 + 20, 150))
     pygame.display.update()
+
 
 
 def randomWord():
@@ -108,10 +109,10 @@ def end(winner=False):
     if winner == True:
         label = lost_font.render(winTxt, 1, BLACK)
     else:
-        label = lost_font.render(lostTxt, 1, BLACK)
+        label = lost_font.render(lostTxt, 1, (255, 255, 255))
 
-    wordTxt = lost_font.render(word.upper(), 1, BLACK)
-    wordWas = lost_font.render('The phrase was: ', 1, BLACK)
+    wordTxt = lost_font.render(word.upper(), 1, (BLACK))
+    wordWas = lost_font.render('The phrase was: ', 1, (255, 255, 255))
 
     win.blit(wordTxt, (winWidth/2 - wordTxt.get_width()/2, 295))
     win.blit(wordWas, (winWidth/2 - wordWas.get_width()/2, 245))
