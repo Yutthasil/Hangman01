@@ -1,6 +1,8 @@
 #########################################################
-## File Name: hangman.py                               ##
-## Description: Starter for Hangman project - ICS3U    ##
+## File Name: Hangman.py                               ##
+## Credit:TechWithTim                                  ##
+## https://github.com/techwithtim/Hangman              ##
+## https://www.youtube.com/watch?v=OXi4T58PwdM         ##
 #########################################################
 import pygame
 import random
@@ -9,17 +11,15 @@ pygame.init()
 winHeight = 480
 winWidth = 700
 win = pygame.display.set_mode((winWidth,winHeight)) #ขนาดจอ
-pygame.display.set_caption("Psittestproject") #ตั้งชื่อข้างบน
-#---------------------------------------#
-# initialize global variables/constants #
-#---------------------------------------#
+pygame.display.set_caption("PROJECT PSIT The Evil HangGirl") #ตั้งชื่อข้างบน
+
 BLACK = (0,0, 0)
 WHITE = (255,255,255)
 RED = (255,0, 0)
-GREEN = pygame.image.load('bg.jpg')#Background หาภาพที่ตรงกับขนาดมาใส่
+GREEN = pygame.image.load('backgrounds.jpg')#Background หาภาพที่ตรงกับขนาดมาใส่
 GREEN = pygame.transform.scale(GREEN, (700, 480))
 BLUE = (0,0,255)
-LIGHT_BLUE = (102,255,255)
+DARK_RED = (64,0,4)
 
 btn_font = pygame.font.SysFont("Death_Star", 20)# Font ตัวอักษรในวงกลม
 guess_font = pygame.font.SysFont("monospace", 24)
@@ -47,7 +47,7 @@ def redraw_game_window():
             win.blit(label, (buttons[i][1] - (label.get_width() / 2), buttons[i][2] - (label.get_height() / 2)))
 
     spaced = spacedOut(word, guessed)
-    label1 = guess_font.render(spaced, 1, BLACK)
+    label1 = guess_font.render(spaced, 1, (255,255,255))#สีตัวอักษร
     rect = label1.get_rect()
     length = rect[2]
     
@@ -107,11 +107,11 @@ def end(winner=False):
     win.blit(GREEN, (0, 0))
 
     if winner == True:
-        label = lost_font.render(winTxt, 1, BLACK)
+        label = lost_font.render(winTxt, 1, (255, 255, 255))
     else:
         label = lost_font.render(lostTxt, 1, (255, 255, 255))
 
-    wordTxt = lost_font.render(word.upper(), 1, (BLACK))
+    wordTxt = lost_font.render(word.upper(), 1, (255, 255, 255))
     wordWas = lost_font.render('The phrase was: ', 1, (255, 255, 255))
 
     win.blit(wordTxt, (winWidth/2 - wordTxt.get_width()/2, 295))
@@ -152,7 +152,7 @@ for i in range(26):
     else:
         x = 25 + (increase * (i - 13))
         y = 85
-    buttons.append([LIGHT_BLUE, x, y, 20, True, 65 + i])
+    buttons.append([DARK_RED, x, y, 20, True, 65 + i])
     # buttons.append([color, x_pos, y_pos, radius, visible, char])
 
 word = randomWord()
@@ -187,3 +187,9 @@ while inPlay:
 pygame.quit()
 
 # always quit pygame when done!
+
+#########################################################
+## Credit:TechWithTim                                  ##
+## https://github.com/techwithtim/Hangman              ##
+## https://www.youtube.com/watch?v=OXi4T58PwdM         ##
+#########################################################
